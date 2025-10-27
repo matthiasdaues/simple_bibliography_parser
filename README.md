@@ -1,19 +1,31 @@
-# Python Data Science Template
+# Simple Bibliography Parser
 
-A structured template for Python data science projects with PostgreSQL integration, designed for reproducible and organized data analysis workflows.
+*from frontmatter to bibliographic reference*
 
-## Features
+This tool will parse a directory of markdown files and read the YAML frontmatter properties to create standardized bibliographic data from it.
 
-- **Database Integration**: PostgreSQL connectivity with aiosql for SQL query management
-- **Environment Management**: Poetry for dependency management and virtual environments
-- **Notebook Support**: Jupyter notebooks with custom helpers
-- **Organized Structure**: Clear separation of utilities, functions, and SQL queries
-- **Environment Variables**: Secure configuration management with `.env` files
-- **Code Quality**: Configured for pytest and ruff
+
+## Documentation
+
+01. [Introduction and Goals](docs/01_introduction_and_goals.md)
+02. [Architecture Constraints](docs/02_architecture_constraints.md) 
+03. [System Scope and Context](docs/03_system_scope_and_context.md)
+04. [Solution Strategy](docs/04_solution_strategy.md)
+05. [Building Block View](docs/05_building_block_view.md)
+06. [Runtime View](docs/06_runtime_view.md)
+07. [Deployment View](docs/07_deployment_view.md)
+08. [Crosscutting Concepts](docs/08_crosscutting_concepts.md)
+09. [Architecture Decisions](docs/09_architecture_decisions.md)
+10. [Quality Requirements](docs/10_quality_requirements.md)
+11. [Risks & Technical Debt](docs/11_risks_and_technical_debt.md)
+12. [Glossary](docs/12_glossary.md)
+
 
 ## Project Structure
 
 ```
+├── docs                        # arc42 based documenation
+│   └── assets/                 # image and diagram files used in docs
 ├── src/
 │   ├── python/
 │   │   ├── functions/          # Custom analysis functions
@@ -22,8 +34,10 @@ A structured template for Python data science projects with PostgreSQL integrati
 │       ├── ddl_statements/     # Data definition language
 │       └── transactional_sql/  # Queries and analysis SQL
 ├── notebooks/                  # Jupyter notebooks
-├── pyproject.toml             # Poetry configuration
-└── .env.template              # Environment variables template
+├── pyproject.toml              # Poetry configuration
+├── LICENSE
+├── README.md                   # this document                     
+└── .env.template               # Environment variables template
 ```
 
 ## Setup
@@ -31,7 +45,7 @@ A structured template for Python data science projects with PostgreSQL integrati
 1. **Clone and install dependencies**:
    ```bash
    git clone <repository-url>
-   cd python_data_science_template
+   cd simple_bibliography_parser
    poetry install
    ```
 
@@ -41,71 +55,11 @@ A structured template for Python data science projects with PostgreSQL integrati
    # Edit .env with your database credentials
    ```
 
-3. **Database configuration** (`.env`):
+3. Make poetry kernel available in Jupyter for usage within VSCode:
+   ```bash
+   poetry run ipython kernel install --user --name=simple_bibliography_parser
    ```
-   POSTGRES_HOST=localhost
-   POSTGRES_USER=postgres
-   POSTGRES_PASSWORD=your_password
-   POSTGRES_DB_NAME=your_database
-   POSTGRES_PORT=5432
-   ```
-
-## Usage
-
-### Database Connection
-
-```python
-from src.python.utils import connect_to_db, get_queries
-
-# Connect to database
-conn = connect_to_db()
-
-# Load SQL queries from files
-queries = get_queries()
-```
-
-### Jupyter Notebooks
-
-Start Jupyter with project configuration:
-```bash
-poetry run nb
-```
-
-Or manually:
-```bash
-poetry run jupyter notebook --notebook-dir=notebooks
-```
-
-Or make poetry kernel available in Jupyter for usage within VSCode:
-```bash
-poetry run ipython kernel install --user --name=python_data_science_template
-```
-
-### Utilities
-
-The template includes useful utilities:
-
-- **Database helpers**: Connection management and query loading
-- **Date utilities**: Generate date series for analysis
-- **Notebook helpers**: Custom Jupyter configuration
-
-## Development
-
-- **Testing**: `pytest` (configure as needed)
-- **Linting**: `ruff` (configure as needed)
-- **SQL Management**: Use `aiosql` for organizing SQL queries in separate files
-
-## Dependencies
-
-- **Data**: pandas, openpyxl
-- **Database**: psycopg2, aiosql
-- **Environment**: python-dotenv
-- **Notebooks**: jupyter, notebook, ipykernel
 
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
-
-## Contributing
-
-This is a template repository. Fork it and adapt it to your specific data science needs.
