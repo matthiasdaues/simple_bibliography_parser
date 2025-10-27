@@ -1,14 +1,12 @@
 [tool.poetry]
-name = "Python Data Science Template"
+name = "Simple Bibliography Parser"
 version = "0.1.0"
-description = "A template for Python data science projects"
+description = "This tool will parse a directory of markdown files and read the YAML frontmatter properties to create standardized bibliographic data from it."
 authors = ["Matthias Daues <matthias.daues@datenschoenheit.de>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pandas = "^2.3.0"
 psycopg2 = "^2.9"
-aiosql = "^13.0"
 openpyxl = "^3.1"
 python-dotenv = "^1.0"
 jupyter = "^1.1.1"
